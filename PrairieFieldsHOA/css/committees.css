@@ -1,0 +1,36 @@
+#committees {
+    margin: 10px;
+    width: 100%;
+    height: fit-content;
+}
+
+.committeelist {
+    padding: 5px;
+    display: inline-block;
+    position: static;
+    width: 42%;
+}
+
+.committeelist img {
+    float: left;
+    height: 200px;
+    width: 200px;
+    vertical-align: top;
+}
+
+.committeetext {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    padding-left: 10px;
+    width: 200px;
+    /* font-size: 12px; */
+}
+
+.committeetitle {
+    font-size: 20px;
+}
+
+.slider {
+    margin: auto;
+}

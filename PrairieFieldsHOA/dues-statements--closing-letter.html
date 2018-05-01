@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Prairie Fields HOA</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("#insert_header").load("header.html");
+        })
+        $(function () {
+            $("#insert_nav").load("nav.html");
+        });
+        $(function () {
+            $("#insert_footer").load("footer.html");
+        })
+    </script>
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+
+<body>
+    <div id="insert_header"></div>
+    <div id="content">
+        <div id="insert_nav"></div>
+
+        <main>
+            <div class="pageHeading">
+                Dues Statements / Closing Letters
+            </div>
+            <div id="dividingLine"></div>
+            <p>
+                If you need a dues statement / closing letter / current invoice from the PFHOA due to refinancing your mortgage or selling
+                your property, please fill out the form below. There is a $10.00 fee to generate the letter, which in most
+                cases is paid through the closing of the refinancing or selling of the property. If your agent will not make
+                this payment, you may pay online or by check.
+                <br>
+                <br> Online - Please note that there is a $1 convenience fee associated with making a payment online.
+                <br>
+                <br> Check - Make check out to: Prairie Fields HOA. You can deposit it in the PF HOA Drop Box on Prairie Rose
+                Lane or send it to PO Box 478, Savoy IL 61874.
+            </p>
+            <div class="sectionHeader">Dues Statement / Closing Letter Request</div>
+            <form action="http://formspree.io/kwebb13@stu.parkland.edu" method="POST">
+                <b>Your Name</b>
+                <span class="required">*</span>
+                <br>
+                <input name="firstname" placeholder="First Name" required>
+                <input name="lastname" placeholder="Last Name" style="margin-left: 50px;" required>
+                <br>
+                <b>Your Email Address</b>
+                <span class="required">*</span>
+                <br>
+                <input name="email" size="59" required>
+                <br>
+                <b>Your Phone Number</b>
+                <span class="required">*</span>
+                <br>
+                <input name="phone" size="59" required>
+                <br>
+                <b>Current Owner Name</b>
+                <span class="required">*</span>
+                <br>
+                <input name="ownername" size="59" required>
+                <br>
+                <b>Prairie Field Property Address</b>
+                <span class="required">*</span>
+                <br>
+                <input name="propertyaddress" size="59" required>
+                <br>
+                <b>Closing Date</b>
+                <span class="required">*</span>
+                <br>
+                <input name="closingdate" size="59" required>
+                <br>
+                <b>Comments</b>
+                <br>
+                <textarea name="comments" rows="20" cols="60"></textarea>
+                <br>
+                <b>Attach Any Forms that Need to be Completed Here</b>
+                <br>
+                <input type="file" name="forms">
+                <br>
+                <span style="font-size: 10px;">Max file size: 20MB</span>
+                <br>
+                <input type="submit" value="Submit">
+            </form>
+        </main>
+    </div>
+
+    <div id="insert_footer"></div>
+</body>
+
+</html>

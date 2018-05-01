@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Prairie Fields HOA</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("#insert_header").load("header.html");
+        })
+        $(function () {
+            $("#insert_nav").load("nav.html");
+        });
+        $(function () {
+            $("#insert_footer").load("footer.html");
+        })
+    </script>
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+
+<body>
+    <div id="insert_header"></div>
+    <div id="content">
+        <div id="insert_nav"></div>
+
+        <main>
+            <div class="pageHeading">
+                Community Links
+            </div>
+            <div id="dividingLine"></div>
+
+            <ul>
+                <li>
+                    <a href="http://www.champaignschools.org/schools/home/?id=11" target="_blank">Carrie Busey Elementary School</a>
+                </li>
+                <li>
+                    <a href="http://www.co.champaign.il.us/sheriff" target="_blank">Champaign County Sheriff</a>
+                </li>
+                <li>
+                    <a href="http://www.savoyrecreationcenter.com/" target="_blank">Savoy Rec. Center</a>
+                </li>
+                <li>
+                    <a href="http://www.news-gazette.com/" target="_blank">The News-Gazette</a>
+                </li>
+                <li>
+                    <a href="http://www.tolonolibrary.org/" target="_blank">Tolono Public Library District</a>
+                </li>
+                <li>
+                    <a href="http://www.champaignschools.org/" target="_blank">Unit 4 School District</a>
+                </li>
+                <li>
+                    <a href="http://www.village.savoy.il.us/" target="_blank">Village of Savoy</a>
+                </li>
+            </ul>
+
+        </main>
+    </div>
+
+    <div id="insert_footer"></div>
+</body>
+
+</html>

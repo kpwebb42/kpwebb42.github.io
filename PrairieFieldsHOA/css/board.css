@@ -1,0 +1,30 @@
+#members {
+    margin: 10px;
+    width: 100%;
+    height: fit-content;
+}
+
+.boardmember {
+    padding: 5px;
+    display: inline-block;
+    position: static;
+    width: 42%;
+}
+
+.boardmember img {
+    float: left;
+    height: 200px;
+    width: 200px;
+    vertical-align: top;
+}
+
+.boardtext {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    padding-left: 10px;
+}
+
+.boardtitle {
+    font-size: 24px;
+}

@@ -1,0 +1,14 @@
+#phaselistTEMP {
+    width: 30%;
+    float: left;
+}
+
+#phaselistTEMP a {
+    padding-left: 50px;
+}
+
+#phasemap {
+    /* padding-left: 150px; */
+    width: 30%;
+    float: left;
+}

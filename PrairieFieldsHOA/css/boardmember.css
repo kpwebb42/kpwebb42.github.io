@@ -1,0 +1,17 @@
+#memberpic {
+    height: 400px;
+    width: 400px;
+    padding-top: 20px;
+    float: left;
+}
+
+#membertext {
+    padding-left: 50px;
+    padding-top: 20px;
+    width: 400px;
+    float: left;
+}
+
+#membertext ul li {
+    list-style-type: decimal;
+}

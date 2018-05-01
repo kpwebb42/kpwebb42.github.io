@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Prairie Fields HOA</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("#insert_header").load("header.html");
+        })
+        $(function () {
+            $("#insert_nav").load("nav.html");
+        });
+        $(function () {
+            $("#insert_footer").load("footer.html");
+        })
+    </script>
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+
+<body>
+    <div id="insert_header"></div>
+    <div id="content">
+        <div id="insert_nav"></div>
+
+        <main>
+            <div class="pageHeading">
+                Prairie Field Homeowner's Association Bylaws
+            </div>
+            <div id="dividingLine"></div>
+            <p>
+                The Bylaws are the guidelines for the operation of the HOA. The Bylaws define the duties of the various offices of the Board
+                of Directors, Accounting, the membership's voting rights, required meetings and notices of meetings, elections,
+                as well as other specific items that are necessary to run the Association as a business.
+            </p>
+            <p>
+                <a href="CovenantFiles/pfhoa-bylaws.pdf" target="_blank">To view the bylaws, click here.</a>
+            </p>
+
+        </main>
+    </div>
+
+    <div id="insert_footer"></div>
+</body>
+
+</html>
