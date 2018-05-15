@@ -1,6 +1,6 @@
 // Universal variables
 var raceChoice;
-var bestVote = {"score": "0", "name": "Hmm... You should do some more research!", "fileName": "you"};
+
 var abortionAns;
 var ssmAns;
 var immigrationAns;
@@ -57,7 +57,8 @@ function Answers() {
 
 // Finds each candidate in a race, runs ResultsCandidates() on each one
 function Results() {
-    return new Promise((resolve => {
+    return new Promise((resolve, reject) => {
+        var bestVote = {"score": "0", "name": "Hmm... You should do some more research!", "fileName": "you"};
         $(".resultColumn").remove();
         $.getJSON("json-files/races/" + raceChoice + ".json", function (data) {
             $(data.candidates).each(function () {
@@ -65,7 +66,8 @@ function Results() {
                 ResultsCandidates(name);
             });
         });
-    }));
+        resolve(voteFor(bestVote));
+    });
 }
 
 // Fills out each candidate's column on the results page
@@ -97,12 +99,13 @@ function ResultsCandidates(name) {
         // obj["score"] = similar;
         // bestVote.push(obj);
         // console.log(bestVote.length + " loop length");
-
+        console.log(similar);
         if (similar > bestVote.score) {
             bestVote.score = similar;
             bestVote.name = label;
             bestVote.fileName = name;
         }
+        console.log(bestVote);
     });
 }
 
@@ -115,9 +118,9 @@ function addVotes(v, u) {
         return 0;
     }
 }
-function voteFor() {
-    $("#finalPic").html("<img src='images/" + bestVote.fileName + ".jpg'>");
-    $("#finalName").html(bestVote.name);
+function voteFor(v) {
+    $("#finalPic").html("<img src='images/" + v.fileName + ".jpg'>");
+    $("#finalName").html(v.name);
 }
 
 // Form validation
@@ -197,7 +200,7 @@ function StepThree() {
     document.body.scrollTop = 0; // Safari
     document.documentElement.scrollTop = 0;
     Answers();
-    Results().then(voteFor());
+    Results();
     $("#stepOne").hide();
     $("#stepTwo").hide();
     $("#stepThree").show();
