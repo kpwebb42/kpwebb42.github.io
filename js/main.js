@@ -1,6 +1,6 @@
 // Universal variables
 var raceChoice;
-var bestVote = [];
+var bestVote = {"score": "0", "name": "Hmm... You should do some more research!", "fileName": "you"};
 var abortionAns;
 var ssmAns;
 var immigrationAns;
@@ -24,7 +24,7 @@ function boxMark(a) {
         return
     }
 }
-function picColor (party) {
+function picColor(party) {
     if (party == "Democrat") {
         return "style='background-color:blue;'";
     }
@@ -56,13 +56,16 @@ function Answers() {
 }
 
 // Finds each candidate in a race, runs ResultsCandidates() on each one
-function Results(choice) {
-    $.getJSON("json-files/races/" + choice + ".json", function (data) {
-        $(data.candidates).each(function () {
-            var name = this.name;
-            ResultsCandidates(name);
+function Results() {
+    return new Promise((resolve => {
+        $(".resultColumn").remove();
+        $.getJSON("json-files/races/" + raceChoice + ".json", function (data) {
+            $(data.candidates).each(function () {
+                var name = this.name;
+                ResultsCandidates(name);
+            });
         });
-    });
+    }));
 }
 
 // Fills out each candidate's column on the results page
@@ -70,26 +73,40 @@ function ResultsCandidates(name) {
     var similar = 0;
     var label = "";
     $.getJSON("json-files/candidates/" + name + ".json", function (data) {
-        $("#resultsPictures").append("<div class='col-sm-2'" + picColor(data.party) + "><img src='images/" + name + ".jpg'></div>");
-        $("#resultsName").append("<div class='col-sm-2'>" + data.title + " " + data.firstName + " <br>" + data.lastName + "</div>");
+        $("#resultsPictures").append("<div class='col-sm-2 resultColumn'" + picColor(data.party) + "><img src='images/" + name + ".jpg'></div>");
+        $("#resultsName").append("<div class='col-sm-2 resultColumn'>" + data.title + " " + data.firstName + " <br>" + data.lastName + "</div>");
         label = data.title + " " + data.firstName + " " + data.lastName;
-        $("#resultsAbortion").append("<div class='col-sm-2'>" + boxMark(data.positions.abortion) + "</div>");
+        $("#resultsAbortion").append("<div class='col-sm-2 findSource resultColumn' onclick='Sources()'>" + boxMark(data.positions.abortion) + "</div>");
         similar += addVotes(data.positions.abortion, abortionAns);
-        $("#resultsSSM").append("<div class='col-sm-2'>" + boxMark(data.positions.ssm) + "</div>");
+        $("#resultsSSM").append("<div class='col-sm-2 findSource resultColumn' onclick='Sources()'>" + boxMark(data.positions.ssm) + "</div>");
         similar += addVotes(data.positions.ssm, ssmAns);
-        $("#resultsImmigration").append("<div class='col-sm-2'>" + boxMark(data.positions.immigration) + "</div>");
+        $("#resultsImmigration").append("<div class='col-sm-2 findSource resultColumn' onclick='Sources()'>" + boxMark(data.positions.immigration) + "</div>");
         similar += addVotes(data.positions.immigration, immigrationAns);
-        $("#resultsTaxes").append("<div class='col-sm-2'>" + boxMark(data.positions.taxes) + "</div>");
+        $("#resultsTaxes").append("<div class='col-sm-2 findSource resultColumn' onclick='Sources()'>" + boxMark(data.positions.taxes) + "</div>");
         similar += addVotes(data.positions.taxes, taxesAns);
-        $("#resultsGuns").append("<div class='col-sm-2'>" + boxMark(data.positions.guns) + "</div>");
+        $("#resultsGuns").append("<div class='col-sm-2 findSource resultColumn' onclick='Sources()'>" + boxMark(data.positions.guns) + "</div>");
         similar += addVotes(data.positions.guns, gunsAns);
-        $("#resultsEco").append("<div class='col-sm-2'>" + boxMark(data.positions.eco) + "</div>");
+        $("#resultsEco").append("<div class='col-sm-2 findSource resultColumn' onclick='Sources()'>" + boxMark(data.positions.eco) + "</div>");
         similar += addVotes(data.positions.eco, ecoAns);
-        $("#resultsWeed").append("<div class='col-sm-2'>" + boxMark(data.positions.weed) + "</div>");
+        $("#resultsWeed").append("<div class='col-sm-2 findSource resultColumn' onclick='Sources()'>" + boxMark(data.positions.weed) + "</div>");
         similar += addVotes(data.positions.weed, weedAns);
+
+        // var obj = {};
+        // obj["name"] = label;
+        // obj["fileName"] = name;
+        // obj["score"] = similar;
+        // bestVote.push(obj);
+        // console.log(bestVote.length + " loop length");
+
+        if (similar > bestVote.score) {
+            bestVote.score = similar;
+            bestVote.name = label;
+            bestVote.fileName = name;
+        }
     });
-    bestVote.push({name: label, fileName: name, score: similar});
 }
+
+// Calculates the best vote
 function addVotes(v, u) {
     if (v == u) {
         return 1;
@@ -98,20 +115,63 @@ function addVotes(v, u) {
         return 0;
     }
 }
-
 function voteFor() {
-    var highScore = 0;
-    var highName = "";
-    var highFileName = ";"
-    for (var i=0;i<bestVote.length;i++) {
-        if (bestVote[i].score > highScore) {
-            highScore = bestVote[i].score;
-            highName = bestVote[i].label;
-            highFileName = bestVote[i].fileName;
-        }
-    };
-    $("#finalPic").html("<img src='images/'" + highFileName + ".jpg'>");
-    $("#finalName").html(highName);
+    $("#finalPic").html("<img src='images/" + bestVote.fileName + ".jpg'>");
+    $("#finalName").html(bestVote.name);
+}
+
+// Form validation
+function formProcess() {
+    var isValid = true;
+    var emailPattern = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}\b/;
+    var email = $("#email").val();
+    if (email == "") {
+        $("#emailResponse").text("This field is required!");
+        isValid = false;
+    }
+    else if (!emailPattern.test(email)) {
+        $("#emailResponse").text("Must be a valid email address!")
+        isValid = false;
+    }
+    else {
+        $("#emailResponse").text("");
+    }
+
+    var password = $("#password1").val();
+    var passLength = password.length;
+    if (password == "") {
+        $("#password1Response").text("This field is required!");
+        isValid = false;
+    }
+    else if (passLength < 6) {
+        $("#password1Response").text("Password must be more than 6 characters!");
+        isValid = false;
+    }
+    else {
+        $("#password1Response").text("");
+    }
+
+    var passwordConfirm = $("#password2").val();
+    if (passwordConfirm == "") {
+        $("#password2Response").text("This field is required!");
+        isValid = false;
+    }
+    else if (passwordConfirm != password) {
+        $("#password2Response").text("Passwords must be the same!");
+        isValid = false;
+    }
+    else {
+        $("#password2Response").text("");
+    }
+
+    if (isValid == false) {
+        event.preventDefault();
+    }
+}
+
+// Sources pop-up
+function Sources() {
+    $("#sourceDialogue").modal();
 }
 
 // Handles each step progression
@@ -121,32 +181,48 @@ function StepOne() {
     $("#stepOne").show();
     $("#stepTwo").hide();
     $("#stepThree").hide();
+    $("#accountRegister").hide();
+    $("#success").hide();
 }
 function StepTwo() {
     document.body.scrollTop = 0; // Safari
     document.documentElement.scrollTop = 0;
+    bestVote = {"score": "0", "name": "Hmm... You should do some more research!", "fileName": "you"};
     $("#stepOne").hide();
     $("#stepTwo").show();
     $("#stepThree").hide();
-
     raceChoice = $("#raceChoice").val();
 }
 function StepThree() {
     document.body.scrollTop = 0; // Safari
     document.documentElement.scrollTop = 0;
     Answers();
-    Results(raceChoice);
-    voteFor();
+    Results().then(voteFor());
     $("#stepOne").hide();
     $("#stepTwo").hide();
     $("#stepThree").show();
 }
+function RegisterToggle() {
+    document.body.scrollTop = 0; // Safari
+    document.documentElement.scrollTop = 0;
+    $("#stepOne").hide();
+    $("#stepTwo").hide();
+    $("#stepThree").hide();
+    $("#accountRegister").show();
+    $("#back4").click(StepOne);
+    $("#submit").submit(formProcess);
+}
+function RegisterDone() {
+    $("#registrationForm").hide();
+    $("#success").show();
+}
 
 // Document ready
 $(document).ready(function () {
+    StepOne();
     $("#back2").click(StepOne);
     $("#next1").click(StepTwo);
     $("#back3").click(StepTwo);
     $("#next2").click(StepThree);
-    StepOne();
+    $("#signup").click(RegisterToggle);
 });

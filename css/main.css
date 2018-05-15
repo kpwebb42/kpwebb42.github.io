@@ -21,7 +21,6 @@ body {
     background-color: #256bdb;
     min-height: 100%;
     max-width: 1000px;
-    
 }
 
 .nextButton {
@@ -79,6 +78,10 @@ body {
     color: blue;
 }
 
+#signup {
+    cursor: pointer;
+}
+
 h1 {
     font-family: 'Titan One', sans-serif;
     font-size: 60px;
@@ -128,9 +131,23 @@ h1 {
     margin: 0;
 }
 
-.finalPic, .finalName {
+.findSource {
+    cursor: pointer;
+}
+
+.findSource:hover {
+    background-color: skyblue;
+}
+
+#voteFor {
     background-color: rgb(29, 174, 231);
     font-size: 24px;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+form {
+    margin: auto;
 }
 
 #disclaimer {

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/main.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/bootstrap.js"></script>
     <script src="js/main.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Titan+One" rel="stylesheet">
 
@@ -23,7 +24,8 @@
         </div>
         <div class="container-fluid" id="menuBar">
             <span id="register">
-                <a href="https://vote.gov/">Register to vote!</a> | Log In or Sign Up</span>
+                <a href="https://vote.gov/">Register to vote!</a> | </span>
+            <span id="signup">Log In or Sign Up</span>
         </div>
     </header>
 
@@ -40,7 +42,7 @@
                 </select>
                 <br>
                 <br>
-                <span class="nextButton" id="next1">Next &gt</span>
+                <span class="nextButton" id="next1">Next &gt;</span>
             </p>
         </div>
         <div class="content" id="stepTwo">
@@ -145,8 +147,8 @@
                 </div>
                 <br>
                 <br>
-                <span class="nextButton" id="back2">&lt Back</span>
-                <span class="nextButton" id="next2">Next &gt</span>
+                <span class="nextButton" id="back2">&lt; Back</span>
+                <span class="nextButton" id="next2">Next &gt;</span>
             </p>
         </div>
         <div class="content" id="stepThree">
@@ -204,9 +206,62 @@
                     <div class="col-sm-4" id="finalName"></div>
                 </div>
             </div>
+
             <p>
-                <span class="nextButton" id="back3">&lt Back</span>
+                <span class="nextButton" id="back3">&lt; Back</span>
             </p>
+        </div>
+        <div class="content" id="accountRegister">
+            <h1 class="stepHead">Register Your Account</h1>
+            <form id="registrationForm" action="javascript:RegisterDone()" onSubmit="javascript:formProcess()">
+                <div class="row">
+                    <div class="col-sm-3"><label for="email">Email Address</label></div>
+                    <div class="col-sm-3"><input type="text" id="email" name="email"></div>
+                    <div class="col-sm-3" id="emailResponse"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3"><label for="password1">Password</label></div>
+                    <div class="col-sm-3"><input type="password" id="password1" name="password1"></div>
+                    <div class="col-sm-3" id="password1Response"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3"><label for="password2">Repeat Password</label></div>
+                    <div class="col-sm-3"><input type="password" id="password2" name="password2"></div>
+                    <div class="col-sm-3" id="password2Response"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-3"><input type="submit" id="submit"></div>
+                    <div class="col-sm-3"></div>
+                </div>
+            </form>
+            <div id="success">
+                <p>Thank you! Please check your email for your account validation link.</p>
+                <span class="nextButton" id="back4">Return</span>
+            </div>
+        </div>
+        <div class="modal" id="sourceDialogue" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Sources:</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Lorem ipsum dolor sit amet, eam case necessitatibus vituperatoribus id, duo facer vocibus vivendum
+                            ad, ius melius latine no.</p>
+                        <p>
+                            <a href="#">Source</a>
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
     </main>
 
@@ -216,11 +271,14 @@
             <p>
                 Visit
                 <a href="https://vote.gov/">vote.gov</a> to make sure you're registered to vote!
-                <br> &copy 2018 Kevin Webb
+                <br> &copy; 2018 Kevin Webb
                 <br>
             </p>
         </div>
     </footer>
+
 </body>
+
+
 
 </html>
