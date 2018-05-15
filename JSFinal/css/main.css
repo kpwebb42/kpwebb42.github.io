@@ -1,0 +1,153 @@
+html {
+    background-color: navy;
+    height: 100%;
+    align-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    color: red;
+}
+
+#pageBreak {
+    height: 5px;
+    width: 50%;
+    background-color: white;
+    margin-left: 25%;
+}
+
+body {
+    margin: auto;
+    background-color: #256bdb;
+    min-height: 100%;
+    max-width: 1000px;
+    
+}
+
+.nextButton {
+    padding: 10px;
+    margin:20px;
+    font-size: 24px;
+    background-color: skyblue;
+    cursor: pointer;
+}
+
+.nextButton:hover {
+    background-color: rgb(185, 226, 241);
+}
+
+.content {
+    margin: auto;
+    color: white;
+    padding: 10px;
+}
+
+.content p {
+    text-align: center;
+    font-size: 24px;
+}
+
+#titleBar {
+    background-color: navy;
+    min-height: 100px;
+    margin-top: 10px;
+}
+
+#star {
+    color: red;
+    text-shadow: 4px 4px white, 8px 8px blue;
+    font-size: 100px;
+}
+
+#title {
+    color: white;
+    font-size: 90px;
+    font-family: 'Titan One', sans-serif;
+}
+
+#menuBar {
+    background-color: red;
+    text-align: right;
+    color: blue;
+    text-decoration: none;
+    padding: 5px;
+    font-size: 18;
+    box-shadow: 0px 2px #174488;
+}
+
+#menuBar a {
+    color: blue;
+}
+
+h1 {
+    font-family: 'Titan One', sans-serif;
+    font-size: 60px;
+    text-align: center;
+    text-shadow: 2px 2px #174488;
+}
+
+#quiz {
+    margin: 0 auto;
+}
+
+#quiz th {
+    padding: 20px;
+    font-size: 25px;
+    background-color: rgb(29, 174, 231);
+    border: 3px solid rgb(29, 174, 231);
+    width: 150px;
+}
+
+#quiz tr {
+    padding: 10px;
+}
+
+#quiz tr:nth-child(even) {
+    background-color: skyblue;
+}
+
+#quiz tr:nth-child(odd) {
+    background-color: rgb(77, 188, 231);
+}
+
+#quiz td {
+    padding: 20px;
+    font-size: 20px;
+    border: 3px solid rgb(29, 174, 231);
+}
+
+#results {
+    text-align: center;
+}
+
+#results div div {
+    background-color: rgb(29, 174, 231);
+    border: solid 2px skyblue;
+    padding: 16px;
+    font-size: 20px;
+    margin: 0;
+}
+
+.finalPic, .finalName {
+    background-color: rgb(29, 174, 231);
+    font-size: 24px;
+}
+
+#disclaimer {
+    position: static;
+    padding-bottom: 10px;
+    left: 50%;
+}
+
+#disclaimer p {
+    font-size: 12;
+    color: white;
+    text-align: center;
+}
+
+/* Bootstrap Stuff */
+
+.col-sm-2 {
+    margin: 0 auto;
+    float: none;
+}
